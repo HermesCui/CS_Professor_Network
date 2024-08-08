@@ -40,7 +40,7 @@ def get_all_coauthors(professor_urls):
     collaboration_count = defaultdict(int)
     for professor_name, url in professor_urls.items():
         coauthors = get_dblp_coauthors(url)
-        print(f"Coauthors for {professor_name}: {coauthors}")  # 调试信息
+        print(f"Coauthors for {professor_name}: {coauthors}")  
         for coauthor_name, count in coauthors.items():
             collaboration_count[(professor_name, coauthor_name)] += count
     return collaboration_count

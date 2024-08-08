@@ -66,9 +66,7 @@ function initializeCytoscape(data) {
             minTemp: 1.0
         }
     });
-
-    // Highlight major professors and their top coauthors
-    const majorProfessors = ['Qizhen Zhang', 'Philip A. Bernstein', 'Daniela Rosu'];
+   
     cy.nodes().forEach(node => {
         if (majorProfessors.includes(node.id())) {
             node.addClass('major');
@@ -80,30 +78,6 @@ function initializeCytoscape(data) {
             });
         }
     });
-
-    // Measure layout performance
-    function runLayout() {
-        console.time('Layout Time');
-        cy.layout({
-            name: 'cose',
-            padding: 10,
-            animate: false, // Disable animation for accurate timing
-            fit: true,
-            randomize: true,
-            nodeRepulsion: 400000,
-            idealEdgeLength: 100,
-            edgeElasticity: 100,
-            gravity: 80,
-            numIter: 1000,
-            initialTemp: 200,
-            coolingFactor: 0.95,
-            minTemp: 1.0
-        }).run();
-        console.timeEnd('Layout Time');
-    }
-
-    // Run the layout initially
-    runLayout();
 
     return cy;
 }
